@@ -39,4 +39,5 @@ bindkey "${terminfo[kcud1]}" down-line-or-beginning-search # Down
 # Sourcing the ZSH syntax highlighting from brew 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
+# Sourcing the ZSH auto suggestions from berw
+source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
