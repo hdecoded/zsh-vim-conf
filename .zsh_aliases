@@ -34,6 +34,9 @@ alias nz="nvim ~/.zshrc"
 alias cz="codium ~/.zshrc"
 alias sz="source ~/.zshrc"
 
+## cat
+alias cat='bat'
+
 ## helpers 
 alias co='codium'
 alias c='clear'
