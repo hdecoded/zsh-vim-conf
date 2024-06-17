@@ -7,6 +7,13 @@ fi
 
 # homebrew setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
 
 # enabling powerlevel10k
 source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
@@ -43,7 +50,7 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ---- Eza (better ls) -----
-alias l="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions --sort=type"
+alias l="eza -l --color=always --no-filesize --icons=always --no-time --no-user --no-permissions --sort=type"
 alias ls="eza -bl --total-size --icons=always --git --no-permissions --no-user --no-time --git --color=always --sort=type"
 alias la="eza -bla --no-filesize --icons=always --git --no-permissions --no-user --no-time --color=always --sort=type"
 alias lsa="eza -bla --total-size --icons=always --git --no-permissions --no-user --no-time --git --color=always --sort=type"
@@ -89,5 +96,31 @@ export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${
 # Source fzf git cloned from https://github.com/junegunn/fzf-git.sh.git
 source ~/.fzf-git/fzf-git.sh
 
+# Integrate bat and eza with fzf 
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
 # --------------- fzf end ---------------- 
 
+# --------------- bat (better cat) config --------------
+
+export BAT_THEME=Dracula
+
+# ------ zsh auto complete -----
+#source /home/linuxbrew/.linuxbrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
