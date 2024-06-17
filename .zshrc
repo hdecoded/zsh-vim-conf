@@ -100,8 +100,8 @@ _fzf_comprun() {
 }
 
 # thefuck alias
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
+#eval $(thefuck --alias)
+#eval $(thefuck --alias fk)
 
 alias vz="nvim ~/.zshrc"
 alias nz="nvim ~/.zshrc"
