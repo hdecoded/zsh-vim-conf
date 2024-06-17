@@ -62,6 +62,10 @@ bindkey "\e[3;6~" kill-line
 bindkey "\e[3@" kill-line
 
 
+# ---- Source aliasses ----
+
+source ~/.zsh_aliases
+
 # completion using arrow keys (based on the whole first word history)
 # bindkey "${terminfo[kcuu1]}" up-line-or-search
 # bindkey "${terminfo[kcud1]}" down-line-or-search
@@ -72,17 +76,9 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 # Sourcing the ZSH auto suggestions from berw
 source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# ---- Eza (better ls) -----
-alias l="eza -l --color=always --no-filesize --icons=always --no-time --no-user --no-permissions --sort=type"
-alias ls="eza -bl --total-size --icons=always --git --no-permissions --no-user --no-time --git --color=always --sort=type"
-alias la="eza -bla --no-filesize --icons=always --git --no-permissions --no-user --no-time --color=always --sort=type"
-alias lsa="eza -bla --total-size --icons=always --git --no-permissions --no-user --no-time --git --color=always --sort=type"
-alias lp="eza -bla --no-filesize --icons=always --git --no-user --no-time --color=always --sort=type"
-alias lu="eza -bla --total-size --icons=always --git --no-permissions --no-time --git --color=always --sort=type"
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
-alias cd="z"
 
 # --------------- fzf start  ---------------- 
 
