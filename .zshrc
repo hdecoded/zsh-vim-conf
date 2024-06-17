@@ -1,3 +1,4 @@
+
 # ---------------------- p10k Start ---------------------- #
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -6,6 +7,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 
 # enabling powerlevel10k
@@ -29,6 +31,7 @@ fi
 # ---------------------- homebrew end ---------------------- #
 
 # ---------------------- history start ---------------------- #
+
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
@@ -36,6 +39,7 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
+
 # ---------------------- history end ---------------------- #
 
 # ---------------------- keybindings start ---------------------- #
@@ -132,3 +136,4 @@ _fzf_comprun() {
 }
 
 # ---------------------- fzf plugin end ---------------------- #
+
