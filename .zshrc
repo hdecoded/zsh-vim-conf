@@ -32,6 +32,11 @@ zle -N down-line-or-beginning-search
 bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search # Up
 bindkey "${terminfo[kcud1]}" down-line-or-beginning-search # Down
 
-# completion using arrow keys (based on the whole line history)
+# completion using arrow keys (based on the whole first word history)
 # bindkey "${terminfo[kcuu1]}" up-line-or-search
 # bindkey "${terminfo[kcud1]}" down-line-or-search
+
+# Sourcing the ZSH syntax highlighting from brew 
+source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
