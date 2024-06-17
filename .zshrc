@@ -1,11 +1,22 @@
+# ---------------------- p10k Start ---------------------- #
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 
-# homebrew setup
+# enabling powerlevel10k
+source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ---------------------- p10k end ---------------------- #
+
+# ---------------------- homebrew start ---------------------- #
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 if type brew &>/dev/null
 then
@@ -15,15 +26,9 @@ then
   compinit
 fi
 
-#autoload -U compinit; compinit
+# ---------------------- homebrew end ---------------------- #
 
-# enabling powerlevel10k
-source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# history setup
+# ---------------------- history start ---------------------- #
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
@@ -31,44 +36,23 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
+# ---------------------- history end ---------------------- #
+
+# ---------------------- keybindings start ---------------------- #
 
 # completion using arrow keys (based on the whole line history)
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search # Up
-bindkey "${terminfo[kcud1]}" down-line-or-beginning-search # Down
+source ~/.zsh_keybind
 
-### ctrl+arrows
-bindkey "\e[1;5C" forward-word
-bindkey "\e[1;5D" backward-word
-# urxvt
-bindkey "\eOc" forward-word
-bindkey "\eOd" backward-word
+# ---------------------- keybindings end ---------------------- #
 
-### ctrl+delete
-bindkey "\e[3;5~" kill-word
-# urxvt
-bindkey "\e[3^" kill-word
-
-### ctrl+backspace
-bindkey '^H' backward-kill-word
-
-### ctrl+shift+delete
-bindkey "\e[3;6~" kill-line
-# urxvt
-bindkey "\e[3@" kill-line
-
-
-# ---- Source aliasses ----
+# ---------------------- aliases start ---------------------- #
 
 source ~/.zsh_aliases
 
-# completion using arrow keys (based on the whole first word history)
-# bindkey "${terminfo[kcuu1]}" up-line-or-search
-# bindkey "${terminfo[kcud1]}" down-line-or-search
+# ---------------------- aliases end ---------------------- #
+
+# ---------------------- zsh plugins start ---------------------- #
 
 # Sourcing the ZSH syntax highlighting from brew 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -76,11 +60,23 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 # Sourcing the ZSH auto suggestions from berw
 source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-
-# ---- Zoxide (better cd) ----
+# Zoxide (better cd) 
 eval "$(zoxide init zsh)"
 
-# --------------- fzf start  ---------------- 
+# bat (better cat) config
+export BAT_THEME=Dracula
+
+# you-should-use 
+
+source ~/.zsh/.ysu/you-should-use.plugin.zsh
+
+
+##  zsh auto complete 
+#source /home/linuxbrew/.linuxbrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# ---------------------- zsh plugins end ---------------------- #
+
+# ---------------------- fzf plugin start ---------------------- #
 
 # Source fzf for ctrl+t shortcut - setting up shell integration 
 source <(fzf --zsh)
@@ -102,7 +98,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# --- setup fzf theme ---
+# --- setup fzf theme start ---
 fg="#CBE0F0"
 bg="#011628"
 bg_highlight="#143652"
@@ -111,12 +107,12 @@ blue="#06BCE4"
 cyan="#2CF9ED"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
-
+# --- setup fzf theme end ---
 # Source fzf git cloned from https://github.com/junegunn/fzf-git.sh.git
-source ~/.fzf-git/fzf-git.sh
+source ~/.zsh/.fzf-git/fzf-git.sh
 
 # Integrate bat and eza with fzf 
-
+#
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
@@ -135,11 +131,4 @@ _fzf_comprun() {
   esac
 }
 
-# --------------- fzf end ---------------- 
-
-# --------------- bat (better cat) config --------------
-
-export BAT_THEME=Dracula
-
-# ------ zsh auto complete -----
-#source /home/linuxbrew/.linuxbrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# ---------------------- fzf plugin end ---------------------- #

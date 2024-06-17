@@ -1,5 +1,4 @@
 ## git aliases
-
 alias gs='git status'
 alias ga='git add'
 alias gp='git push'
@@ -36,7 +35,7 @@ alias cz="codium ~/.zshrc"
 alias sz="source ~/.zshrc"
 
 ## helpers 
-alias co=codium
-alias c=clear
-alias d=pwd
+alias co='codium'
+alias c='clear'
+alias d='pwd'
 alias e="explorer ."
