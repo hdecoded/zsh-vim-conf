@@ -49,3 +49,7 @@ alias la="eza -bla --no-filesize --icons=always --git --no-permissions --no-user
 alias lsa="eza -bla --total-size --icons=always --git --no-permissions --no-user --no-time --git --color=always --sort=type"
 alias lp="eza -bla --no-filesize --icons=always --git --no-user --no-time --color=always --sort=type"
 alias lu="eza -bla --total-size --icons=always --git --no-permissions --no-time --git --color=always --sort=type"
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+alias cd="z"
