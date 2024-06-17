@@ -54,15 +54,12 @@ alias lu="eza -bla --total-size --icons=always --git --no-permissions --no-time 
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-# -- Use fd instead of fzf --
+# --------------- fzf start  ---------------- 
 
-#if [ -x "$(command -v fzf)"  ]
-#then
-#    source home/linuxbrew/.linuxbrew/Cellar/fzf/0.53.0/shell/key-bindings.zsh
-#fi
-
+# Source fzf for ctrl+t shortcut - setting up shell integration 
 source <(fzf --zsh)
 
+# -- Use fd instead of fzf --
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
@@ -89,4 +86,8 @@ cyan="#2CF9ED"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
+# Source fzf git cloned from https://github.com/junegunn/fzf-git.sh.git
 source ~/.fzf-git/fzf-git.sh
+
+# --------------- fzf end ---------------- 
+
