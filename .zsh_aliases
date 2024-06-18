@@ -25,6 +25,9 @@ alias la="eza -bla --no-filesize --icons=always --git --no-permissions --no-user
 alias lsa="eza -bla --total-size --icons=always --git --no-permissions --no-user --no-time --git --color=always --sort=type"
 alias lp="eza -bla --no-filesize --icons=always --git --no-user --no-time --color=always --sort=type"
 alias lu="eza -bla --total-size --icons=always --git --no-permissions --no-time --git --color=always --sort=type"
+alias lt='eza --tree --git-ignore'
+alias lta='eza -a --tree --git-ignore'
+alias ltag='eza -a --tree'
 
 ## zoxide
 alias cd='z'
