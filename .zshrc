@@ -58,8 +58,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # macOS specific key bindings
   bindkey "^[[A" up-line-or-beginning-search
   bindkey "^[[B" down-line-or-beginning-search
-  bindkey "^[[C" forward-word
-  bindkey "^[[D" backward-word
+  bindkey "^[[1;3C" forward-word
+  bindkey "^[[1;3D" backward-word
 else
   # WSL specific key bindings
   bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
