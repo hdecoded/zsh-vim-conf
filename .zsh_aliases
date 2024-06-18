@@ -50,6 +50,10 @@ alias cat='bat'
 ## fzf_alias
 alias fza="fzf_alias"
 
+## xclip 
+
+alias ccb='xclip -selection clipboard -i <'
+
 ## helpers 
 alias co='codium'
 alias c='clear'
