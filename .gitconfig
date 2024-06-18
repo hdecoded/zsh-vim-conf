@@ -9,6 +9,10 @@
 	defaultBranch = main
 [core]
     pager = delta
+	longpaths = true
+
+[includeIf "gitdir:~/wsm/"]
+    path = ~/wsm/.gitconfig
 
 [interactive]
     diffFilter = delta --color-only
