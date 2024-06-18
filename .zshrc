@@ -113,6 +113,16 @@ eval $(thefuck --alias fk)
 
 # ---------------------- zsh plugins end ---------------------- #
 
+# ---------------------- mkdir and cd start ---------------------- #
+
+mc ()
+{
+    mkdir -p -- "$1" &&
+       cd -P -- "$1"
+}
+
+# ---------------------- mkdir and cd end ---------------------- #
+
 # ---------------------- fzf plugin start ---------------------- #
 
 # Source fzf for ctrl+t shortcut - setting up shell integration 
