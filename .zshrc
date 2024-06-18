@@ -45,7 +45,31 @@ setopt hist_verify
 
 # completion using arrow keys (based on the whole line history)
 
-source ~/.zsh_keybind
+# source ~/.zsh_keybind
+
+# completion using arrow keys (based on the whole line history)
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+# ctrl+arrows
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+# urxvt
+bindkey "\eOc" forward-word
+bindkey "\eOd" backward-word
+# ctrl+delete
+bindkey "\e[3;5~" kill-word
+# urxvt
+bindkey "\e[3^" kill-word
+# ctrl+backspace
+bindkey '^H' backward-kill-word
+# ctrl+shift+delete
+bindkey "\e[3;6~" kill-line
+# urxvt
+bindkey "\e[3@" kill-line
 
 # ---------------------- keybindings end ---------------------- #
 
