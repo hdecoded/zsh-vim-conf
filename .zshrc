@@ -18,8 +18,7 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # ---------------------- p10k end ---------------------- #
 
-# ---------------------- homebrew start ---------------------- #
-eval "$($(brew --prefix)/bin/brew shellenv)"
+# ---------------------- homebrew autoload start ---------------------- #
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -28,7 +27,7 @@ then
   compinit
 fi
 
-# ---------------------- homebrew end ---------------------- #
+# ---------------------- homebrew autoload end ---------------------- #
 
 # ---------------------- history start ---------------------- #
 
