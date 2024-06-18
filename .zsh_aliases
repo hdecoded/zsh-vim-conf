@@ -47,6 +47,9 @@ alias n='vim'
 ## cat
 alias cat='bat'
 
+## fzf_alias
+alias fza="fzf_alias"
+
 ## helpers 
 alias co='codium'
 alias c='clear'

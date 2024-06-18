@@ -71,9 +71,10 @@ eval "$(zoxide init zsh)"
 export BAT_THEME=Dracula
 
 # you-should-use 
-
 source ~/.zsh/.ysu/you-should-use.plugin.zsh
 
+# fzf-alias 
+source ~/.zsh/.fzf-alias/fzf-alias.plugin.zsh
 
 ##  zsh auto complete 
 #source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
