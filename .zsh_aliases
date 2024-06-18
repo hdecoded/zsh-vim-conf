@@ -47,8 +47,29 @@ alias n='vim'
 ## cat
 alias cat='bat'
 
+## fzf_alias
+alias fza="fzf_alias"
+
 ## helpers 
 alias co='codium'
 alias c='clear'
 alias d='pwd'
-alias e="explorer ."
+
+# Function to check if running in WSL
+is_wsl() {
+    grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null
+    return $?
+}
+
+# Determine the OS and set aliases accordingly
+if [[ "$(uname)" == "Darwin" ]]; then
+    # macOS specific alias
+    alias e='open .'
+elif grep -qi ubuntu /etc/os-release && is_wsl; then
+    # WSL Ubuntu specific alias
+    alias e='Explorer.exe .'
+else
+    # Default alias if not macOS or WSL Ubuntu
+    alias e='echo "This is neither macOS nor Ubuntu on WSL"'
+fi
+

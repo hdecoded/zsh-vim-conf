@@ -18,8 +18,7 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # ---------------------- p10k end ---------------------- #
 
-# ---------------------- homebrew start ---------------------- #
-eval "$($(brew --prefix)/bin/brew shellenv)"
+# ---------------------- homebrew autoload start ---------------------- #
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -28,7 +27,7 @@ then
   compinit
 fi
 
-# ---------------------- homebrew end ---------------------- #
+# ---------------------- homebrew autoload end ---------------------- #
 
 # ---------------------- history start ---------------------- #
 
@@ -46,7 +45,36 @@ setopt hist_verify
 
 # completion using arrow keys (based on the whole line history)
 
-source ~/.zsh_keybind
+# source ~/.zsh_keybind
+
+# Load zsh line functions
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Define key bindings
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS specific key bindings
+  bindkey "^[[A" up-line-or-beginning-search
+  bindkey "^[[B" down-line-or-beginning-search
+  bindkey "^[[C" forward-word
+  bindkey "^[[D" backward-word
+else
+  # WSL specific key bindings
+  bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+  bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+  bindkey "\e[1;5C" forward-word
+  bindkey "\e[1;5D" backward-word
+  bindkey "\e[3;5~" kill-word      # ctrl+delete
+  bindkey '^H' backward-kill-word  # ctrl+backspace
+  bindkey "\e[3;6~" kill-line      # ctrl+shift+delete
+  # bindkey "\eOc" forward-word      # urxvt forward-word
+  # bindkey "\eOd" backward-word     # urxvt backward-word
+  # bindkey "\e[3^" kill-word        # urxvt ctrl+delete
+  # bindkey "\e[3@" kill-line        # urxvt ctrl+shift+delete
+fi
+
 
 # ---------------------- keybindings end ---------------------- #
 
@@ -71,9 +99,10 @@ eval "$(zoxide init zsh)"
 export BAT_THEME=Dracula
 
 # you-should-use 
-
 source ~/.zsh/.ysu/you-should-use.plugin.zsh
 
+# fzf-alias 
+source ~/.zsh/.fzf-alias/fzf-alias.plugin.zsh
 
 ##  zsh auto complete 
 #source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
