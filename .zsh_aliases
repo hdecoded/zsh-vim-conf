@@ -17,6 +17,7 @@ alias gr='git remote'
 alias grs='git remote show'
 alias glo='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
+alias gcl='git clone'
 
 ## eza aliases 
 alias l="eza -l --color=always --no-filesize --icons=always --no-time --no-user --no-permissions --sort=type"
@@ -30,7 +31,7 @@ alias lta='eza -a --tree --git-ignore'
 alias ltag='eza -a --tree'
 
 ## zoxide
-alias cd='z'
+#alias cd='z'
 
 ## .zshrc 
 alias vz="nvim ~/.zshrc"
