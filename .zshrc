@@ -166,3 +166,11 @@ _fzf_comprun() {
 
 # ---------------------- fzf plugin end ---------------------- #
 
+# ---------------------- sdkman start ---------------------- #
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# ---------------------- sdkman end ---------------------- #
+
