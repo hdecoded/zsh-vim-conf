@@ -53,8 +53,6 @@ alias fza="fzf_alias"
 
 ## xclip 
 
-alias ccb='xclip -selection clipboard -i <'
-
 ## helpers 
 alias co='codium'
 alias c='clear'
@@ -70,8 +68,10 @@ is_wsl() {
 if [[ "$(uname)" == "Darwin" ]]; then
     # macOS specific alias
     alias e='open .'
-elif grep -qi ubuntu /etc/os-release && is_wsl; then
+    alias ccb='pbcopy <'
+  elif grep -qi ubuntu /etc/os-release && is_wsl; then
     # WSL Ubuntu specific alias
+    alias ccb='xclip -selection clipboard -i <'
     alias e='Explorer.exe .'
 else
     # Default alias if not macOS or WSL Ubuntu
