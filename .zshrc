@@ -104,6 +104,10 @@ source ~/.zsh/.ysu/you-should-use.plugin.zsh
 # fzf-alias 
 source ~/.zsh/.fzf-alias/fzf-alias.plugin.zsh
 
+# thefuck
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
+
 ##  zsh auto complete 
 #source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
