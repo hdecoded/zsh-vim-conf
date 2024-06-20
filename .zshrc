@@ -96,7 +96,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(zoxide init zsh)"
 
 # bat (better cat) config
-export BAT_THEME=Dracula
+export BAT_THEME=gruvbox-dark
 
 # you-should-use 
 source ~/.zsh/.ysu/you-should-use.plugin.zsh
@@ -145,7 +145,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# --- setup fzf theme start ---
+# --- setup fzf tokyonight theme start ---
 fg="#CBE0F0"
 bg="#011628"
 bg_highlight="#143652"
@@ -154,7 +154,38 @@ blue="#06BCE4"
 cyan="#2CF9ED"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
-# --- setup fzf theme end ---
+# --- setup fzf tokyonight theme end ---
+
+# --- setup fzf gruvbox theme start ---
+_gen_fzf_default_opts() {
+
+local color00='#32302f'
+local color01='#3c3836'
+local color02='#504945'
+local color03='#665c54'
+local color04='#bdae93'
+local color05='#d5c4a1'
+local color06='#ebdbb2'
+local color07='#fbf1c7'
+local color08='#fb4934'
+local color09='#fe8019'
+local color0A='#fabd2f'
+local color0B='#b8bb26'
+local color0C='#8ec07c'
+local color0D='#83a598'
+local color0E='#d3869b'
+local color0F='#d65d0e'
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
+" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
+" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+
+}
+
+_gen_fzf_default_opts
+# --- setup fzf gruvbox theme end ---
+
 # Source fzf git cloned from https://github.com/junegunn/fzf-git.sh.git
 source ~/.zsh/.fzf-git/fzf-git.sh
 
