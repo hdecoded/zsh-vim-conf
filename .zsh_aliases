@@ -18,6 +18,8 @@ alias grs='git remote show'
 alias glo='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
 alias gcl='git clone'
+alias gdom='git diff origin/main'
+alias gcm='git commit -m'
 
 ## eza aliases 
 alias l="eza -l --color=always --no-filesize --icons=always --no-time --no-user --no-permissions --sort=type"
