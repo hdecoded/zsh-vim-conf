@@ -3,4 +3,5 @@
 .config/qBittorrent
 .config/thefuck
 .config/JetBrains
+.config/nvim_hd
 .DS_Store
