@@ -4,4 +4,5 @@
 .config/thefuck
 .config/JetBrains
 .config/nvim_hd
+.config/nvim/lazy-lock.json
 .DS_Store
